@@ -9,8 +9,7 @@ include 'assets/navbar.php';
                                     <h3>Students List</h3>
                                 </div>
                                 <div class="">
-                                    <img class="" src="img/scroll.svg" alt="">
-                                    <button class="btn btn-info text-white ">ADD NEW STUDENT</button>
+                                    <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">ADD NEW STUDENT</button>
                                 </div>
                             </div>
                         </div>
@@ -30,16 +29,9 @@ include 'assets/navbar.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $students_list= array (
-                                            array("img"=>"img/table.svg", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021"),
-                                            array("img"=>"img/table.svg", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021"),
-                                            array("img"=>"img/table.svg", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021"),
-                                            array("img"=>"img/table.svg", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021"),
-                                            array("img"=>"img/table.svg", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021"),
-                                            array("img"=>"img/table.svg", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021"),
-                                            array("img"=>"img/table.svg", "Name"=>"username", "Email"=>"user@email.com", "Phone"=>"7305477760", "EnrollNumber"=>"1234567305477760", "Dateofadmission"=>"08-Dec-2021")
-                                        );
-                                        foreach ($students_list as $user) {
+                                       $students = file_get_contents('students.json');
+                                       $students = json_decode($students, true);
+                                        foreach ($students as $user) {
                                             echo '<tr class="bg-white"';
                                             echo '<tr> </tr>';
                                             echo '<th scope="row"><img src="'.$user['img'].'" alt=""></th>';
@@ -48,7 +40,7 @@ include 'assets/navbar.php';
                                             echo '<td class="align-middle">'.$user['Phone'].'</td>';
                                             echo '<td class="align-middle">'.$user['EnrollNumber'].'</td>';
                                             echo '<td class="align-middle">'.$user['Dateofadmission'].'</td>';
-                                            echo '<td class="align-middle">
+                                            echo '<td class="align-middle" href="edite.php" >
                                             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M18.3033 2.08777L16.9113 0.695801C16.4478 0.231934 15.8399 0 15.2321 0C14.6242 0 14.0164 0.231934 13.5525 0.69543L0.475916 13.772L0.00462689 18.0107C-0.0547481 18.5443 0.365701 19 0.88783 19C0.920858 19 0.953885 18.9981 0.987654 18.9944L5.22332 18.5265L18.3036 5.44617C19.231 4.51881 19.231 3.01514 18.3033 2.08777ZM4.67818 17.3924L1.2259 17.775L1.61035 14.3175L11.4031 4.52475L14.4747 7.59629L4.67818 17.3924ZM17.4639 4.60676L15.3141 6.7565L12.2426 3.68496L14.3923 1.53521C14.6164 1.31107 14.9148 1.1875 15.2321 1.1875C15.5494 1.1875 15.8474 1.31107 16.0719 1.53521L17.4639 2.92719C17.9266 3.39031 17.9266 4.14363 17.4639 4.60676Z" fill="#00C1FE"/>
                                             </svg>
@@ -68,6 +60,75 @@ include 'assets/navbar.php';
             </div>
         </div>
     </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ADD STUDENT</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Name</label>
+                        <input type="text" name="Name" class="form-control" id="InputName" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Email Address</label>
+                        <input type="email" name="Email"  class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Phone" class="form-label">Phone</label>
+                        <input type="text" name="Phone"  class="form-control" id="InputPhone" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="EnrollNumber" class="form-label">Enroll Number</label>
+                        <input type="text"  name="EnrollNumber"  class="form-control" id="InputEnrollNumber" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Dateofadmission" class="form-label">Date of admission</label>
+                        <input type="text" name="Dateofadmission"  class="form-control" id="InputDateofadmission" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <button id="btnadd" class="btn btn-primary">ADD</button>
+                    </div>
+                    </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        <?php
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $students = fopen("students.json", "r");
+
+            $data = json_decode(fread($students,filesize("students.json")),true);
+
+            fclose($students);
+
+            $add = [
+                    'img' =>'img\/table.svg',
+                    'Name' => $_POST['Name'],
+                    'Email' => $_POST['Email'],
+                    'Phone' => $_POST['Phone'],
+                    'EnrollNumber' => uniqid(),
+                    'Dateofadmission' => $_POST['Dateofadmission']
+            ];
+
+            array_push($data, $add);
+
+            file_put_contents("students.json", json_encode($data, JSON_PRETTY_PRINT));
+
+            echo "SUCCESS";
+
+        }
+
+        ?>
+       
     <?php
-include 'assets/js.php';
+include './js.php';
 ?>
