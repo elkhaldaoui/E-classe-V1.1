@@ -9,18 +9,26 @@
     },
     {
         "img": "img\\\/table.svg",
-        "Name": "Oussama Elkhaldaoui",
+        "Name": "Elkhaldaoui",
         "Email": "oussama.elkhaldaoui@gmail.com",
         "Phone": "0611848302",
-        "EnrollNumber": "61f2a8b8ecc8d",
-        "Dateofadmission": "1"
+        "EnrollNumber": "61f2dbb84935f",
+        "Dateofadmission": "2021-11-27"
     },
     {
         "img": "img\\\/table.svg",
-        "Name": "Oussama Elkhaldaoui",
+        "Name": "Elkhaldaoui",
         "Email": "oussama.elkhaldaoui@gmail.com",
         "Phone": "0611848302",
-        "EnrollNumber": "61f2a907a2cd8",
-        "Dateofadmission": "1"
+        "EnrollNumber": "61f2dbbc54611",
+        "Dateofadmission": "2021-11-27"
+    },
+    {
+        "img": "img\\\/table.svg",
+        "Name": "Elkhaldaoui",
+        "Email": "oussama.elkhaldaoui@gmail.com",
+        "Phone": "0611848302",
+        "EnrollNumber": "61f2dd5163185",
+        "Dateofadmission": "2021-11-27"
     }
 ]
