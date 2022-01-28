@@ -1,11 +1,16 @@
 <?php
 include 'assets/navbar.php';
 ?>
+<style>
+#form{
+  margin: 10%;
+}
+</style>
 
 <div class="container">
 
   <br><br>
-  <form action="/action_page.php">
+  <form action="/action_page.php" id="form" >
     <div class="form-group">
       <label for="Name">Name:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter Name" name="email">
@@ -29,7 +34,7 @@ include 'assets/navbar.php';
     <div class="checkbox">
       <label><input type="checkbox" name="remember"> Are you sure</label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-primary" href="Students.php" role="button">Submit</a>
   </form>
 </div>
 
